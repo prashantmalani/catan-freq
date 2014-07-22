@@ -2,6 +2,7 @@ package com.prashgames.catan;
 
 import java.util.Arrays;
 
+import android.renderscript.Int3;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -94,6 +95,52 @@ public class MainActivity extends ActionBarActivity {
 	 * or reset the array.
 	 */
 	public void serviceClick(View v) {
+		int button = Integer.MAX_VALUE;
+		boolean resetCalled = false;
+		switch(v.getId()) {
+		case R.id.button2:
+			button = 2;
+			break;
+		case R.id.button3:
+			button = 3;
+			break;
+		case R.id.button4:
+			button = 4;
+			break;
+		case R.id.button5:
+			button = 5;
+			break;
+		case R.id.button6:
+			button = 6;
+			break;
+		case R.id.button7:
+			button = 7;
+			break;
+		case R.id.button8:
+			button = 8;
+			break;
+		case R.id.button9:
+			button = 9;
+			break;
+		case R.id.button10:
+			button = 10;
+			break;
+		case R.id.button11:
+			button = 11;
+			break;
+		case R.id.button12:
+			button = 12;
+			break;
+		case R.id.buttonReset:
+			resetCalled = true;
+			break;
+		}
+
+		if (resetCalled == true) {
+			Log.e(TAG, "Reset was called");
+		} else {
+			Log.e(TAG, "Button " + Integer.toString(button) + "was called");
+		}
 	}
 
 }
