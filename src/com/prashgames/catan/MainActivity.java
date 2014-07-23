@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
 	 * Service all the clicks. Based on the button clicked, either update the array,
 	 * or reset the array.
 	 */
-	public void serviceClick(View v) {
+	public boolean serviceClick(View v) {
 		int button = Integer.MAX_VALUE;
 		boolean resetCalled = false;
 		switch(v.getId()) {
@@ -134,6 +134,8 @@ public class MainActivity extends ActionBarActivity {
 		case R.id.buttonReset:
 			resetCalled = true;
 			break;
+		default:
+			return true;
 		}
 
 		if (resetCalled == true) {
@@ -141,6 +143,7 @@ public class MainActivity extends ActionBarActivity {
 		} else {
 			Log.e(TAG, "Button " + Integer.toString(button) + "was called");
 		}
-	}
 
+		return true;
+	}
 }

@@ -6,7 +6,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:onClick="serviceClick"
     tools:context="com.prashgames.catan.MainActivity$PlaceholderFragment" >
 
     <TextView
@@ -22,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_centerVertical="true"
+        android:onClick="serviceClick"
         android:text="@string/_2" />
 
     <Button
@@ -32,6 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="25dp"
         android:layout_marginRight="12dp"
+        android:onClick="serviceClick"
         android:text="@string/reset_string" />
 
     <Button
@@ -42,6 +43,7 @@
         android:layout_alignBaseline="@+id/button8"
         android:layout_alignBottom="@+id/button8"
         android:layout_alignLeft="@+id/button5"
+        android:onClick="serviceClick"
         android:text="@string/_9" />
 
     <Button
@@ -53,6 +55,7 @@
         android:layout_alignBottom="@+id/button4"
         android:layout_marginLeft="26dp"
         android:layout_toRightOf="@+id/button4"
+        android:onClick="serviceClick"
         android:text="@string/_5" />
 
     <Button
@@ -63,6 +66,7 @@
         android:layout_alignBaseline="@+id/button7"
         android:layout_alignBottom="@+id/button7"
         android:layout_toLeftOf="@+id/button5"
+        android:onClick="serviceClick"
         android:text="@string/_8" />
 
     <Button
@@ -73,6 +77,7 @@
         android:layout_alignBaseline="@+id/button10"
         android:layout_alignBottom="@+id/button10"
         android:layout_toRightOf="@+id/textView1"
+        android:onClick="serviceClick"
         android:text="@string/_11" />
 
     <Button
@@ -83,6 +88,7 @@
         android:layout_alignBaseline="@+id/button11"
         android:layout_alignBottom="@+id/button11"
         android:layout_toLeftOf="@+id/button5"
+        android:onClick="serviceClick"
         android:text="@string/_12" />
 
     <Button
@@ -93,6 +99,7 @@
         android:layout_above="@+id/buttonReset"
         android:layout_alignLeft="@+id/button6"
         android:layout_marginBottom="11dp"
+        android:onClick="serviceClick"
         android:text="@string/_10" />
 
     <Button
@@ -103,6 +110,7 @@
         android:layout_below="@+id/button3"
         android:layout_marginTop="17dp"
         android:layout_toRightOf="@+id/textView1"
+        android:onClick="serviceClick"
         android:text="@string/_7" />
 
     <Button
@@ -113,6 +121,7 @@
         android:layout_above="@+id/button10"
         android:layout_alignLeft="@+id/button2"
         android:layout_marginBottom="19dp"
+        android:onClick="serviceClick"
         android:text="@string/_6" />
 
     <Button
@@ -123,6 +132,7 @@
         android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
         android:layout_toRightOf="@+id/textView1"
+        android:onClick="serviceClick"
         android:text="@string/_3" />
 
     <Button
@@ -132,6 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button7"
         android:layout_centerHorizontal="true"
+        android:onClick="serviceClick"
         android:text="@string/_4" />
 
 </RelativeLayout>
