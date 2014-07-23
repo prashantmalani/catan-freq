@@ -145,4 +145,15 @@
         android:onClick="serviceClick"
         android:text="@string/_4" />
 
+    <TextView
+        android:id="@+id/last5Nums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button10"
+        android:layout_alignTop="@+id/buttonReset"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="8dp"
+        android:textSize="22sp"
+        android:text="@string/last5Nums" />
+
 </RelativeLayout>

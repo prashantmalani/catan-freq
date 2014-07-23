@@ -16,5 +16,6 @@
     <string name="_10">10</string>
     <string name="_12">12</string>
     <string name="reset_string">Reset</string>
+    <string name="last5Nums">Last 5 nums displayed here</string>
 
 </resources>

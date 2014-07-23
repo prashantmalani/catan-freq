@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.os.Build;
 import android.util.Log;
 
@@ -21,10 +22,11 @@ public class MainActivity extends ActionBarActivity {
 	private int MAX_DICE_OUTCOMES = 12;
 
 	/*
-	 * Array to store all the frequencies of each dice value.
-	 * We don't really need an array of 13, but it makes it easier to index in.
+	 * Array to store all the frequencies of each dice value. We don't really
+	 * need an array of 13, but it makes it easier to index in.
 	 */
-	private int[] freqCounter = new int[MAX_DICE_OUTCOMES + 1];
+	private int[] mfreqCounter = new int[MAX_DICE_OUTCOMES + 1];
+	private static TextView mLast5NumsView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		// Initialize array to 0
-		Arrays.fill(freqCounter, 0);
+		Arrays.fill(mfreqCounter, 0);
 	}
 
 	@Override
@@ -91,13 +93,13 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/*
-	 * Service all the clicks. Based on the button clicked, either update the array,
-	 * or reset the array.
+	 * Service all the clicks. Based on the button clicked, either update the
+	 * array, or reset the array.
 	 */
 	public boolean serviceClick(View v) {
 		int button = Integer.MAX_VALUE;
 		boolean resetCalled = false;
-		switch(v.getId()) {
+		switch (v.getId()) {
 		case R.id.button2:
 			button = 2;
 			break;
@@ -139,11 +141,13 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		if (resetCalled == true) {
-			Log.e(TAG, "Reset was called");
+			Arrays.fill(mfreqCounter, 0);
 		} else {
-			Log.e(TAG, "Button " + Integer.toString(button) + "was called");
+			mfreqCounter[button]++;
 		}
 
+		mLast5NumsView = (TextView) findViewById(R.id.last5Nums);
+		mLast5NumsView.setText(Arrays.toString(mfreqCounter));
 		return true;
 	}
 }
