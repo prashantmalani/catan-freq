@@ -8,18 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.prashgames.catan.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
     <Button
         android:id="@+id/button2"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
         android:layout_centerVertical="true"
         android:onClick="serviceClick"
         android:text="@string/_2" />
@@ -76,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button10"
         android:layout_alignBottom="@+id/button10"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_alignLeft="@id/button7"
         android:onClick="serviceClick"
         android:text="@string/_11" />
 
@@ -97,63 +90,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonReset"
-        android:layout_alignLeft="@+id/button6"
+        android:layout_alignLeft="@+id/button2"
         android:layout_marginBottom="11dp"
         android:onClick="serviceClick"
         android:text="@string/_10" />
 
-    <Button
-        android:id="@+id/button7"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="17dp"
-        android:layout_toRightOf="@+id/textView1"
-        android:onClick="serviceClick"
-        android:text="@string/_7" />
+    <TextView
+        android:id="@+id/last5Nums"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/button2"
+        android:layout_alignLeft="@+id/button10"
+        android:layout_alignTop="@+id/buttonReset"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/last5Nums"
+        android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/button6"
-        style="?android:attr/buttonStyleSmall"
+    <LinearLayout
+        android:id="@+id/graphLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button10"
         android:layout_alignLeft="@+id/button2"
-        android:layout_marginBottom="19dp"
-        android:onClick="serviceClick"
-        android:text="@string/_6" />
+        android:layout_alignRight="@+id/buttonReset"
+        android:layout_above="@id/button2"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+    </LinearLayout>
 
     <Button
         android:id="@+id/button3"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_marginLeft="26dp"
+        android:layout_toLeftOf="@+id/button4"
+        android:layout_alignTop="@id/button2"
         android:onClick="serviceClick"
         android:text="@string/_3" />
+
+    <Button
+        android:id="@+id/button7"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button12"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_marginBottom="16dp"
+        android:onClick="serviceClick"
+        android:text="@string/_7" />
 
     <Button
         android:id="@+id/button4"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button7"
+        android:layout_alignTop="@+id/button2"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="26dp"
         android:onClick="serviceClick"
         android:text="@string/_4" />
 
-    <TextView
-        android:id="@+id/last5Nums"
+    <Button
+        android:id="@+id/button6"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button10"
-        android:layout_alignTop="@+id/buttonReset"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="8dp"
-        android:textSize="22sp"
-        android:text="@string/last5Nums" />
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_alignLeft="@+id/button2"
+        android:onClick="serviceClick"
+        android:text="@string/_6" />
 
 </RelativeLayout>

@@ -2,6 +2,10 @@ package com.prashgames.catan;
 
 import java.util.Arrays;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.LineGraphView;
+
 import android.renderscript.Int3;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -12,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.os.Build;
 import android.util.Log;
@@ -49,6 +54,24 @@ public class MainActivity extends ActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	public void createGraph() {
+		GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
+			    new GraphViewData(1, 2.0d)
+			    , new GraphViewData(2, 1.5d)
+			    , new GraphViewData(3, 2.5d)
+			    , new GraphViewData(4, 1.0d)
+		});
+
+		GraphView graphView = new LineGraphView(
+		    this // context
+		    , "GraphViewDemo" // heading
+		);
+		graphView.addSeries(exampleSeries); // data
+
+		LinearLayout layout = (LinearLayout) findViewById(R.id.graphLayout);
+		layout.addView(graphView);
 	}
 
 	@Override
@@ -148,6 +171,7 @@ public class MainActivity extends ActionBarActivity {
 
 		mLast5NumsView = (TextView) findViewById(R.id.last5Nums);
 		mLast5NumsView.setText(Arrays.toString(mfreqCounter));
+		createGraph();
 		return true;
 	}
 }
