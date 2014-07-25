@@ -1,14 +1,14 @@
 package com.prashgames.catan;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
 
-import android.renderscript.Int3;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,34 +18,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.os.Build;
 import android.util.Log;
 
 public class MainActivity extends ActionBarActivity {
-
 	private String TAG = "MainCatanActivity";
 	private int MAX_DICE_OUTCOMES = 12;
 
-	/*
+	/**
 	 * Array to store all the frequencies of each dice value. We don't really
 	 * need an array of 13, but it makes it easier to index in.
 	 */
-	private int[] mfreqCounter = new int[MAX_DICE_OUTCOMES + 1];
+	private int[] mFreqCounter = new int[MAX_DICE_OUTCOMES + 1];
 	private static TextView mLast5NumsView;
+	private GraphView mGraphView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// Initialize array to 0
+		Arrays.fill(mFreqCounter, 0);
+		mGraphView = new BarGraphView(this, "FreqGraph");
+		// Fill in the Graph with the initial values
+		GraphViewData[] graphFreqArray  = generateGraphArray(mFreqCounter);
+		GraphViewSeries freqSeries = new GraphViewSeries(graphFreqArray);
+		mGraphView.addSeries(freqSeries);
+
 		setContentView(R.layout.activity_main);
 
-		Log.e(TAG, "onCreate() called!");
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
-		// Initialize array to 0
-		Arrays.fill(mfreqCounter, 0);
 	}
 
 	@Override
@@ -54,24 +59,6 @@ public class MainActivity extends ActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-
-	public void createGraph() {
-		GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
-			    new GraphViewData(1, 2.0d)
-			    , new GraphViewData(2, 1.5d)
-			    , new GraphViewData(3, 2.5d)
-			    , new GraphViewData(4, 1.0d)
-		});
-
-		GraphView graphView = new LineGraphView(
-		    this // context
-		    , "GraphViewDemo" // heading
-		);
-		graphView.addSeries(exampleSeries); // data
-
-		LinearLayout layout = (LinearLayout) findViewById(R.id.graphLayout);
-		layout.addView(graphView);
 	}
 
 	@Override
@@ -164,14 +151,55 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		if (resetCalled == true) {
-			Arrays.fill(mfreqCounter, 0);
+			Arrays.fill(mFreqCounter, 0);
 		} else {
-			mfreqCounter[button]++;
+			mFreqCounter[button]++;
 		}
 
 		mLast5NumsView = (TextView) findViewById(R.id.last5Nums);
-		mLast5NumsView.setText(Arrays.toString(mfreqCounter));
-		createGraph();
+		mLast5NumsView.setText(Arrays.toString(mFreqCounter));
+		drawGraph(mFreqCounter);
 		return true;
+	}
+
+	/**
+	 * Takes in the frequency integer array  and converts into a GraphViewData array.
+	 * TODO: Check that the input array is valid (size, etc.)
+	 *
+	 * @param freqCounter
+	 * @return GraphViewData[]
+	 */
+	public GraphViewData[] generateGraphArray(int freqCounter[]) {
+		int size = freqCounter.length;
+		// We avoid the first two indices since they are empty
+		List<GraphViewData> graphFreqList = new ArrayList<GraphViewData>();	
+		int i;
+		for( i = 2; i < size; i++) {
+			Log.e(TAG, "Dice = " + i + ", freq = " + freqCounter[i]);
+			graphFreqList.add(new GraphViewData(i, freqCounter[i]));
+		}
+
+		GraphViewData[] graphFreqArray = new GraphViewData[graphFreqList.size()];
+
+		graphFreqArray  = graphFreqList.toArray(graphFreqArray);
+		return graphFreqArray;
+	}
+
+	/**
+	 * Draw the bar graph for the frequency array
+	 * @param	freqCounter	Array which contains the frequency data of die rolls.
+	 * @return	void
+	 */
+	public void drawGraph(int freqCounter[]) {
+		GraphViewData[] graphFreqArray  = generateGraphArray(freqCounter);
+		GraphViewSeries freqSeries = new GraphViewSeries(graphFreqArray);
+
+		mGraphView.removeAllSeries();
+		mGraphView.addSeries(freqSeries);
+
+		LinearLayout layout = (LinearLayout) findViewById(R.id.graphLayout);
+		layout.removeAllViews();
+		layout.addView(mGraphView);
+		layout.invalidate();
 	}
 }
