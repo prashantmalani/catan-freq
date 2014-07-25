@@ -4,9 +4,9 @@ import com.jjoe64.graphview.GraphViewDataInterface;
 
 
 public class GraphViewData implements GraphViewDataInterface {
-    private double x,y;
+    private int x,y;
 
-    public GraphViewData(double x, double y) {
+    public GraphViewData(int x, int y) {
         this.x = x;
         this.y = y;
     }

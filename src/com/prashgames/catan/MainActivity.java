@@ -38,11 +38,19 @@ public class MainActivity extends ActionBarActivity {
 
 		// Initialize array to 0
 		Arrays.fill(mFreqCounter, 0);
-		mGraphView = new BarGraphView(this, "FreqGraph");
+		mGraphView = new BarGraphView(this, "FreqGraph")  {
+			   @Override
+			   protected String formatLabel(double value, boolean isValueX) {
+			      // add a custom format labeller so that we print integers labels
+			      return ""+((int) value);
+			   }
+		};
+
 		// Fill in the Graph with the initial values
 		GraphViewData[] graphFreqArray  = generateGraphArray(mFreqCounter);
 		GraphViewSeries freqSeries = new GraphViewSeries(graphFreqArray);
 		mGraphView.addSeries(freqSeries);
+		mGraphView.getGraphViewStyle().setNumHorizontalLabels(MAX_DICE_OUTCOMES-1);
 
 		setContentView(R.layout.activity_main);
 
