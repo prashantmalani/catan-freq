@@ -41,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
 		mGraphView = new BarGraphView(this, "FreqGraph")  {
 			   @Override
 			   protected String formatLabel(double value, boolean isValueX) {
-			      // add a custom format labeller so that we print integers labels
+			      // add a custom format labeler so that we print integers labels
 			      return ""+((int) value);
 			   }
 		};
